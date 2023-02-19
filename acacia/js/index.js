@@ -1,9 +1,47 @@
-// Взаимодействие с пользователем через стандартные способы в браузере
+const movieDB = {
+  movies: [
+    'Логан',
+    'Лига справедливости',
+    'Ла-ла лэнд',
+    'Одержимость',
+    'Скотт Пилигрим против...',
+    'Аватар',
+  ],
+};
+const films = movieDB.movies.sort();
 
-// alert('Hello!');
+const adv = document.querySelectorAll('[class="promo__adv"] img');
+const genre = document.querySelector('[class="promo__genre"]');
+const promoBg = document.querySelector('[class="promo__bg"]');
+const movies = document.querySelectorAll('[class="promo__interactive-item"]');
+const moviesList = document.querySelector('[class="promo__interactive-list"]');
 
-// const result = confirm('Are you happy?');
-// console.log(result);
+adv.forEach((el) => {
+  el.remove();
+});
 
-// const answer = prompt('How old are you?', '');
-// console.log(answer);
+genre.innerText = 'Драма';
+promoBg.style.background = `url('img/bg.jpg')`;
+movies.forEach((n) => n.remove());
+
+films.forEach((film, i) => {
+  const li = document.createElement('li');
+  li.classList.add('promo__interactive-item');
+  li.innerText = `${i + 1}. ${film}`;
+  moviesList.appendChild(li);
+});
+
+genre.addEventListener('mouseover', (e) => {
+  e.preventDefault();
+  const color = genre.style.color;
+  switch (color) {
+    case '':
+      genre.style.color = 'red';
+      break;
+    case 'red':
+      genre.style.color = 'white';
+      break;
+    default:
+      genre.style.color = 'red';
+  }
+});
