@@ -8,7 +8,8 @@ const obj = {
   },
 };
 
-const newObj = JSON.parse(JSON.stringify(obj));
+// const newObj = JSON.parse(JSON.stringify(obj));
+const newObj = structuredClone(obj);
 
 newObj.a = '1';
 console.log(newObj);
