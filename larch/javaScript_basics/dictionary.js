@@ -15,14 +15,10 @@ const roles = ['user', 'vip', 'guest'];
 
 // Пример вывода find(priorities, roles) => 'vip'
 
-const myFn = (priorities, roles) => {
-  const sortedData = Object.entries(priorities).filter(([key]) => {
-    return roles.includes(key);
-  });
-
-  const result = sortedData.sort(([, value1], [, value2]) => value1 - value2);
-
-  return result.at(-1)[0];
-};
+const myFn = (obj, arr) =>
+  Object.entries(obj)
+    .filter(([value]) => arr.includes(value))
+    .sort(([, value1], [, value2]) => value1 - value2)
+    .at(-1)[0];
 
 console.log(myFn(priorities, roles));
