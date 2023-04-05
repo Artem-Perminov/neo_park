@@ -10,12 +10,6 @@
 // 'rail safety', 'fairy tales' -> true
 // 'listen', 'silent' -> true
 
-const myFn = (str1, str2) => {
-  if (str1.length !== str2.length) {
-    return false;
-  }
-
-  return str1.split('').sort().join('') === str2.split('').sort().join('');
-};
+const myFn = (str1, str2) => [...str1].sort().join('') === [...str2].sort().join('');
 
 console.log(myFn('listen', 'silent'));

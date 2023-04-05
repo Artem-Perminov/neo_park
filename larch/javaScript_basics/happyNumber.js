@@ -1,6 +1,6 @@
 /*
 Счастливые числа
-Назовем счастливыми числами те, которые в результате ряда преобразований вида "сумма квадратов цифр" превратятся в единицу.
+Назовем, счастливыми числами те, которые в результате ряда преобразований вида "сумма квадратов цифр" превратятся в единицу.
 Например:
 
 7   => 7^2 = 49,
@@ -17,23 +17,17 @@ isHappyNumber.js
 Подсказки
 Воспользуйтесь вспомогательной функцией sumOfSquareDigits(), которая принимает на вход число и возвращает "сумму квадратов цифр" этого числа.
 */
+
 const sumOfSquareDigits = (n) => {
-  let sum = 0;
-  const arrNumbers = String(n).split('');
-  arrNumbers.forEach((num) => {
-    sum += Number(num) ** 2;
-  });
-  return sum;
+  return [...String(n)].map((el) => Number(el) ** 2).reduce((a, b) => a + b, 0);
 };
 
 const isHappyNumber = (num) => {
-  let digits = num;
-  for (let i = 0; i < 11; i += 1) {
-    const preResult = sumOfSquareDigits(digits);
-    if (preResult === 1) {
+  let result = num;
+  for (let i = 0; i < 10; i += 1) {
+    result = sumOfSquareDigits(result);
+    if (result === 1) {
       return true;
-    } else {
-      digits = preResult;
     }
   }
   return false;
